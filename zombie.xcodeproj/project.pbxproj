@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DD9CCAA62ABDCCE400728971 /* ZombieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9CCAA52ABDCCE400728971 /* ZombieApp.swift */; };
+		DD9CCAA82ABDCCE400728971 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9CCAA72ABDCCE400728971 /* Overlay.swift */; };
+		DD9CCAAA2ABDCCE600728971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9CCAA92ABDCCE600728971 /* Assets.xcassets */; };
+		DD9CCAAD2ABDCCE600728971 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9CCAAC2ABDCCE600728971 /* Preview Assets.xcassets */; };
+		DD9CCAB52ABDE2A000728971 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9CCAB42ABDE2A000728971 /* BatteryInfo.swift */; };
+		DD9CCAB92ABDE5D900728971 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9CCAB82ABDE5D900728971 /* AppMenu.swift */; };
+		DD9CCABB2ABDE86900728971 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9CCABA2ABDE86900728971 /* AppState.swift */; };
+		DD9CCAC22ABE3EC700728971 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DD9CCAC12ABE3EC700728971 /* MenuBarExtraAccess */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DD9CCAA22ABDCCE400728971 /* zombie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zombie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD9CCAA52ABDCCE400728971 /* ZombieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZombieApp.swift; sourceTree = "<group>"; };
+		DD9CCAA72ABDCCE400728971 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
+		DD9CCAA92ABDCCE600728971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD9CCAAC2ABDCCE600728971 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DD9CCAAE2ABDCCE600728971 /* zombie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zombie.entitlements; sourceTree = "<group>"; };
+		DD9CCAB42ABDE2A000728971 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
+		DD9CCAB82ABDE5D900728971 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
+		DD9CCABA2ABDE86900728971 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD9CCA9F2ABDCCE400728971 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9CCAC22ABE3EC700728971 /* MenuBarExtraAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DD9CCA992ABDCCE400728971 = {
+			isa = PBXGroup;
+			children = (
+				DD9CCAA42ABDCCE400728971 /* zombie */,
+				DD9CCAA32ABDCCE400728971 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD9CCAA32ABDCCE400728971 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CCAA22ABDCCE400728971 /* zombie.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD9CCAA42ABDCCE400728971 /* zombie */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CCABA2ABDE86900728971 /* AppState.swift */,
+				DD9CCAB82ABDE5D900728971 /* AppMenu.swift */,
+				DD9CCAA52ABDCCE400728971 /* ZombieApp.swift */,
+				DD9CCAA72ABDCCE400728971 /* Overlay.swift */,
+				DD9CCAB42ABDE2A000728971 /* BatteryInfo.swift */,
+				DD9CCAA92ABDCCE600728971 /* Assets.xcassets */,
+				DD9CCAAE2ABDCCE600728971 /* zombie.entitlements */,
+				DD9CCAAB2ABDCCE600728971 /* Preview Content */,
+			);
+			path = zombie;
+			sourceTree = "<group>";
+		};
+		DD9CCAAB2ABDCCE600728971 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CCAAC2ABDCCE600728971 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD9CCAA12ABDCCE400728971 /* zombie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD9CCAB12ABDCCE600728971 /* Build configuration list for PBXNativeTarget "zombie" */;
+			buildPhases = (
+				DD9CCA9E2ABDCCE400728971 /* Sources */,
+				DD9CCA9F2ABDCCE400728971 /* Frameworks */,
+				DD9CCAA02ABDCCE400728971 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zombie;
+			packageProductDependencies = (
+				DD9CCAC12ABE3EC700728971 /* MenuBarExtraAccess */,
+			);
+			productName = zombie;
+			productReference = DD9CCAA22ABDCCE400728971 /* zombie.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD9CCA9A2ABDCCE400728971 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					DD9CCAA12ABDCCE400728971 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = DD9CCA9D2ABDCCE400728971 /* Build configuration list for PBXProject "zombie" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DD9CCA992ABDCCE400728971;
+			packageReferences = (
+				DD9CCAC02ABE3EC700728971 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+			);
+			productRefGroup = DD9CCAA32ABDCCE400728971 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD9CCAA12ABDCCE400728971 /* zombie */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD9CCAA02ABDCCE400728971 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9CCAAD2ABDCCE600728971 /* Preview Assets.xcassets in Resources */,
+				DD9CCAAA2ABDCCE600728971 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD9CCA9E2ABDCCE400728971 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9CCAA82ABDCCE400728971 /* Overlay.swift in Sources */,
+				DD9CCABB2ABDE86900728971 /* AppState.swift in Sources */,
+				DD9CCAA62ABDCCE400728971 /* ZombieApp.swift in Sources */,
+				DD9CCAB92ABDE5D900728971 /* AppMenu.swift in Sources */,
+				DD9CCAB52ABDE2A000728971 /* BatteryInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DD9CCAAF2ABDCCE600728971 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DD9CCAB02ABDCCE600728971 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		DD9CCAB22ABDCCE600728971 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = zombie/zombie.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"zombie/Preview Content\"";
+				DEVELOPMENT_TEAM = 7V534MD2F9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mrmonk.macos.zombie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DD9CCAB32ABDCCE600728971 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = zombie/zombie.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"zombie/Preview Content\"";
+				DEVELOPMENT_TEAM = 7V534MD2F9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.mrmonk.macos.zombie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD9CCA9D2ABDCCE400728971 /* Build configuration list for PBXProject "zombie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD9CCAAF2ABDCCE600728971 /* Debug */,
+				DD9CCAB02ABDCCE600728971 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD9CCAB12ABDCCE600728971 /* Build configuration list for PBXNativeTarget "zombie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD9CCAB22ABDCCE600728971 /* Debug */,
+				DD9CCAB32ABDCCE600728971 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DD9CCAC02ABE3EC700728971 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DD9CCAC12ABE3EC700728971 /* MenuBarExtraAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD9CCAC02ABE3EC700728971 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			productName = MenuBarExtraAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DD9CCA9A2ABDCCE400728971 /* Project object */;
+}
