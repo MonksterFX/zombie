@@ -8,10 +8,15 @@
 import SwiftUI
 
 class AppState: ObservableObject {
+    @Published var battery: Double = 1
+    
     @Published var isOn: Bool = false
     @Published var ignoreFocusMode: Bool = false
-    @Published var treshhold: Double = 0.05
-    @Published var battery: Double = 0.5
+    
+    @Published var minThreshold: Double = 0.05
+    @Published var lowThreshold: Double = 0.10
+    
+    
     @Published var controledWindow: NSWindow? = nil
     @Published var autoload: Bool = true
     
@@ -24,7 +29,7 @@ class AppState: ObservableObject {
     }
     
     func updateBattery(_ newValue: Double){
-        self.isOn = newValue > self.treshhold
+        self.isOn = newValue > self.lowThreshold
         self.battery = newValue
     }
 }

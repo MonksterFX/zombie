@@ -34,8 +34,11 @@ struct ZombieApp: App {
             Text("Zombie Timer V.1").onAppear{isMenuPresented.toggle()}
         }*/
         MenuBarExtra("UtilityApp", systemImage: appState.controledWindow == nil ? "hammer" : "minus.plus.batteryblock.exclamationmark.fill") {
-            AppMenu().environmentObject(appState)
-            Overlay().environmentObject(appState)
+            VStack{
+                AppMenu().environmentObject(appState)
+                Overlay().environmentObject(appState)
+            }
+            .padding(16)
         }
         .menuBarExtraStyle(.window)
         .menuBarExtraAccess(isPresented: $appState.autoload)

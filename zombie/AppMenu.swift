@@ -13,16 +13,37 @@ struct AppMenu: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
-        VStack(){
+        VStack(alignment: .leading){
+            Text("Zombie").font(.largeTitle)
+            Text("Battery monitor for the last mile!").font(.subheadline)
+            
             Text("Battery@\(appState.battery * 100)%")
-            Toggle(isOn: $appState.isOn){
-                Text("Test")
+
+            Text("Min Threshold")
+            Slider(value: $appState.lowThreshold) {newValue in
+                print(newValue)
             }
+            
+            Text("Dead Threshold")
+            Slider(value: $appState.minThreshold) {newValue in
+                print(newValue)
+            }
+            
+            Toggle(isOn: $appState.isOn){
+                Text("Demo Mode")
+            }
+            
             Toggle(isOn: $appState.ignoreFocusMode){
                 Text("Ignore Focus Mode")
             }
-            Text("Quit")
         }
-
     }
 }
+
+struct AppMenu_Previews: PreviewProvider {
+    static var previews: some View {
+        AppMenu()
+    }
+}
+
+
