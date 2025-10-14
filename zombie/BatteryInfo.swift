@@ -27,9 +27,8 @@ func checkBatteryStatus() {
   */
                 if let batteryPercentage = powerSourceInfo[kIOPSCurrentCapacityKey] as? Int,
                    let maxCapacity = powerSourceInfo[kIOPSMaxCapacityKey] as? Int {
-                    let percentage = Double(batteryPercentage) / Double(maxCapacity) * 100.0
+                    _ = Double(batteryPercentage) / Double(maxCapacity) * 100.0
                     AppState.shared.updateBattery(Double(batteryPercentage) / Double(maxCapacity))
-                    
                     if(AppState.shared.controledWindow == nil){
                         AppState.shared.triggerAutoload()
                     }
