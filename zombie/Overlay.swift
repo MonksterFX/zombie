@@ -102,6 +102,9 @@ struct Overlay: View {
 
             // Add the border view to the window's content view
             window.contentView = NSHostingView(rootView: borderView)
+            
+            // Make the window visible on all desktops/spaces
+            window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
 
             // Show the window
             window.makeKeyAndOrderFront(nil)
