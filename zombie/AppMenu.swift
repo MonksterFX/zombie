@@ -10,31 +10,74 @@ import Foundation
 import SwiftUI
 
 struct AppMenu: View {
-    @EnvironmentObject var appState: AppState
-
+    @Environment(AppState.self) private var appState
+    
     var body: some View {
-        VStack(alignment: .leading){
-            Text("Zombie").font(.largeTitle)
+        VStack(alignment: .leading, spacing: 10){
+            HStack(alignment: .top){
+                Text("Zombie").font(.largeTitle)
+                Spacer()
+                Text("\(appState.batteryLevel)%")
+            }
             Text("Battery monitor for the last mile!").font(.subheadline)
-            
-            Text("Battery@\(appState.battery * 100)%")
 
-            Text("Min Threshold")
-            Slider(value: $appState.lowThreshold) {newValue in
-                print(newValue)
+            HStack(){
+                Text("Warning Threshold")
+                Spacer()
+                Text("\(appState.lowThreshold)%")
+            }
+            Slider(value: Binding(
+                get: { Double(appState.lowThreshold) },
+                set: { appState.lowThreshold = Int($0) }
+            ), in: 1...30, step: 1)
+            
+            HStack{
+                Text("Dead Threshold")
+                Spacer()
+                Text("\(appState.minThreshold)%")
+            }
+            Slider(value: Binding(
+                get: { Double(appState.minThreshold) },
+                set: { appState.minThreshold = Int($0) }
+            ), in: 1...30, step: 1)
+            
+
+            // MARK: Mute
+            Toggle(isOn:  Binding(
+                get: { appState.isMuted },
+                set: { $0 ? appState.mute() : appState.unmute() }
+           )){
+                Text("Mute for 10 minutes")
             }
             
-            Text("Dead Threshold")
-            Slider(value: $appState.minThreshold) {newValue in
-                print(newValue)
-            }
-            
-            Toggle(isOn: $appState.isOn){
+            // MARK: Demo Mode
+            Toggle(isOn:
+                    Binding(
+                        get: { appState.isDemoMode },
+                       set: { appState.isDemoMode = $0 }
+                   )){
                 Text("Demo Mode")
             }
             
-            Toggle(isOn: $appState.ignoreFocusMode){
-                Text("Ignore Focus Mode")
+            if(appState.isDemoMode){
+                HStack{
+                    Text("Demo Battery Level")
+                    Spacer()
+                    Text("\(appState.demoBatteryLevel)%")
+                }
+                Slider(value: Binding(
+                    get: { Double(appState.demoBatteryLevel) },
+                    set: { appState.demoBatteryLevel = Int($0) }
+                ), in: 1...100, step: 1)
+                
+            }
+            
+            HStack{
+                if let url = URL(string: "https://github.com/MonksterFX/zombie") {
+                    Spacer()
+                    Link("Zombie - Github", destination: url)
+                    Spacer()
+                }
             }
         }
     }

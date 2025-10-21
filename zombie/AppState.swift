@@ -7,18 +7,45 @@
 
 import SwiftUI
 
-class AppState: ObservableObject {
-    @Published var battery: Double = 1
+@Observable class AppState {
+    /* window state */
+    var isDemoMode: Bool = false {
+        didSet { updateOverlayState() }
+    }
+    var isOn: Bool = false {
+        didSet { updateOverlayState() }
+    }
+    var isMuted: Bool = false {
+        didSet { updateOverlayState() }
+    }
     
-    @Published var isOn: Bool = false
-    @Published var ignoreFocusMode: Bool = false
+    /* Add mute function */
+    private var mutedAt: Date? = nil
     
-    @Published var minThreshold: Double = 0.05
-    @Published var lowThreshold: Double = 0.10
+    /* Settings */
+    var minThreshold: Int = 1
+    var lowThreshold: Int = 10
+    {
+        didSet {
+            isOn = batteryLevel <= lowThreshold
+        }
+    }
+    var demoBatteryLevel: Int = 100 {
+        didSet {
+            isOn = demoBatteryLevel < lowThreshold
+        }
+    }
     
+    // var ignoreFocusMode: Bool = false
     
-    @Published var controledWindow: NSWindow? = nil
-    @Published var autoload: Bool = true
+    /* Overlay */
+    var controledWindow: NSWindow? = nil
+    var autoload: Bool = true // TODO: what does this do?
+    
+    /* Power Infos - Managed by PowerEventMonitor */
+    var batteryLevel: Int = 100
+    var isCharging: Bool = false
+    var powerSource: String = "Unknown"
     
     static let shared = AppState()
     
@@ -28,8 +55,56 @@ class AppState: ObservableObject {
         self.autoload = true
     }
     
-    func updateBattery(_ newValue: Double){
-        self.isOn = newValue > self.lowThreshold
-        self.battery = newValue
+    func updateBatteryLevel(level: Int){
+        batteryLevel = level
+        
+        if(isCharging){
+            isOn = false
+            return
+        }
+        
+        if(level <= lowThreshold){
+            isOn = true
+        }
+        
+        self.updateOverlayState()
+    }
+    
+    func mute(){
+        isMuted = true
+        mutedAt = Date()
+        scheduleUnmute(after: 10)
+    }
+    
+    func unmute(){
+        isMuted = false
+        mutedAt = nil
+    }
+
+    private func updateOverlayState() {
+        Task { @MainActor in
+            if isMuted {
+                OverlayManager.shared.removeOverlay(appState: self)
+            } else if (isDemoMode && (demoBatteryLevel <= lowThreshold)) {
+                OverlayManager.shared.ensureOverlay(appState: self)
+            } else if isOn {
+                OverlayManager.shared.ensureOverlay(appState: self)
+            } else {
+                OverlayManager.shared.removeOverlay(appState: self)
+            }
+        }
+    }
+    
+    private func scheduleUnmute(after seconds: TimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds + 1) { [weak self] in
+            guard let self = self else { return }
+
+            // Only unmute if still muted and duration has passed
+            if let mutedAt = self.mutedAt,
+               Date().timeIntervalSince(mutedAt) >= seconds {
+                self.unmute()
+                print("Unmuted automatically after \(seconds) seconds.")
+            }
+        }
     }
 }

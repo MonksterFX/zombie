@@ -11,17 +11,21 @@ import UserNotifications
 
 @main
 struct ZombieApp: App {
-    @StateObject var appState = AppState.shared
-    
-    let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-        checkBatteryStatus()
-    }
-    
+    @State var appState = AppState.shared
+    private var monitor: PowerEventMonitor?
     
     init(){
+        self.monitor = PowerEventMonitor(appState: appState)
+        
+        // Ensure overlay is created at startup (if needed)
+        let capturedState = appState
+        Task { @MainActor in
+            OverlayManager.shared.ensureOverlay(appState: capturedState)
+        }
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                print("All set!")
+                print("Successfully requested notifications")
             } else if let error = error {
                 print(error.localizedDescription)
             }
@@ -30,13 +34,9 @@ struct ZombieApp: App {
     
     
     var body: some Scene {
-        /*WindowGroup{
-            Text("Zombie Timer V.1").onAppear{isMenuPresented.toggle()}
-        }*/
         MenuBarExtra("UtilityApp", systemImage: appState.controledWindow == nil ? "hammer" : "minus.plus.batteryblock.exclamationmark.fill") {
             VStack{
-                AppMenu().environmentObject(appState)
-                Overlay().environmentObject(appState)
+                AppMenu().environment(appState)
             }
             .padding(16)
         }
