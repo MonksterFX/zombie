@@ -45,7 +45,12 @@ final class OverlayManager {
         window.backgroundColor = .clear
         window.level = .floating
         window.ignoresMouseEvents = true
-        window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+        window.collectionBehavior = [
+            .canJoinAllSpaces,
+            .fullScreenAuxiliary,
+            .stationary,
+            .ignoresCycle
+        ]
 
         let borderView = ZombieView().environment(appState)
         window.contentView = NSHostingView(rootView: borderView)
