@@ -88,6 +88,9 @@ private extension AppState {
     }
     
     var powerSource: String = "Unknown"
+
+    /* Advanced Settings */
+    var advancedSettings: Bool = false
     
     // MARK-: Estimate Minutes Remaining
     private let maxSamples = 20
@@ -102,6 +105,7 @@ private extension AppState {
     // Max allowed gap between samples to be considered valid (minutes)
     private let maxSampleGapMinutes: Double = 8
     
+    /* Shared instance */
     static let shared = AppState()
     
     private init() {
