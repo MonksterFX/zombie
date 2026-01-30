@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+// MARK: - UserDefaults Keys
+private extension AppState {
+    /// UserDefaults keys for persistent settings
+    enum Keys {
+        static let lowThreshold = "zombie.lowThreshold"
+        static let minThreshold = "zombie.minThreshold"
+    }
+}
+
 @Observable class AppState {
     /* window state */
     // private(set) var isDemoMode: Bool = false {
@@ -28,10 +37,15 @@ import SwiftUI
     private var mutedAt: Date? = nil
     
     /* Settings */
-    var minThreshold: Int = 1
+    var minThreshold: Int = 1 {
+        didSet {
+            UserDefaults.standard.set(minThreshold, forKey: Keys.minThreshold)
+        }
+    }
     
     var lowThreshold: Int = 10 {
         didSet {
+            UserDefaults.standard.set(lowThreshold, forKey: Keys.lowThreshold)
             self.isOn = self.batteryLevel <= self.lowThreshold
         }
     }
@@ -72,7 +86,14 @@ import SwiftUI
     
     static let shared = AppState()
     
-    private init() {}
+    private init() {
+        // Load persisted settings from UserDefaults
+        self.lowThreshold = UserDefaults.standard.object(forKey: Keys.lowThreshold) as? Int ?? 10
+        self.minThreshold = UserDefaults.standard.object(forKey: Keys.minThreshold) as? Int ?? 1
+        
+        // Update overlay state based on loaded settings
+        self.updateOverlayState()
+    }
     
     func updateBatteryLevel(level: Int){
         self.batteryLevel = level
