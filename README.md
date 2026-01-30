@@ -8,7 +8,7 @@ On Windows you will get warned a second time, some seconds before the device is 
 
 # How it works?
 
-Its a simple overlay which draws a border to the current main screen, which grows the lower your battery gets.
+Its a simple overlay which draws a border to all connected screens, which grows the lower your battery gets. The overlay automatically adapts when monitors are connected or disconnected.
 
 # Disclaimer
 
