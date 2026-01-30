@@ -47,6 +47,16 @@ struct AppMenu: View {
                 set: { appState.minThreshold = Int($0) }
             ), in: 1...30, step: 1)
             
+            HStack{
+                Text("Overlay Text").fontWeight(.bold)
+            }
+            Text("Text shown when battery is critically low").font(.subheadline)
+            
+            TextField("Enter text", text: Binding(
+                get: { appState.overlayText },
+                set: { appState.overlayText = $0 }
+            ))
+            .textFieldStyle(.roundedBorder)
 
             // MARK: Mute
             Button(action: {

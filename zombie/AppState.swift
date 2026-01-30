@@ -13,6 +13,7 @@ private extension AppState {
     enum Keys {
         static let lowThreshold = "zombie.lowThreshold"
         static let minThreshold = "zombie.minThreshold"
+        static let overlayText = "zombie.overlayText"
     }
 }
 
@@ -53,6 +54,13 @@ private extension AppState {
     var demoBatteryLevel: Int = 100 {
         didSet {
             self.isOn = self.demoBatteryLevel < self.lowThreshold
+        }
+    }
+    
+    /// Custom text displayed on the overlay when battery is critically low
+    var overlayText: String = "Dead" {
+        didSet {
+            UserDefaults.standard.set(overlayText, forKey: Keys.overlayText)
         }
     }
     
@@ -100,6 +108,7 @@ private extension AppState {
         // Load persisted settings from UserDefaults
         self.lowThreshold = UserDefaults.standard.object(forKey: Keys.lowThreshold) as? Int ?? 10
         self.minThreshold = UserDefaults.standard.object(forKey: Keys.minThreshold) as? Int ?? 1
+        self.overlayText = UserDefaults.standard.string(forKey: Keys.overlayText) ?? "Dead"
         
         // Update overlay state based on loaded settings
         self.updateOverlayState()

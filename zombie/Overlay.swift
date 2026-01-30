@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct DeadScreenView: View{
+    @Environment(AppState.self) private var appState
     private var color = Color.red
     
     var body: some View{
-        Text("Dead")
+        Text(appState.overlayText)
             .font(.system(size: 120))
             .foregroundStyle(color)
             .shadow(color: color, radius: 10)
