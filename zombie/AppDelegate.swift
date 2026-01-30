@@ -11,6 +11,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     private func setupMyApp() {
         // TODO: Add any intialization steps here.
-        print("Application started up!")
+        NSLog("Application started up!")
     }
 }

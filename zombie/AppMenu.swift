@@ -49,12 +49,21 @@ struct AppMenu: View {
             
 
             // MARK: Mute
-            Toggle(isOn:  Binding(
-                get: { appState.isMuted },
-                set: { $0 ? appState.mute() : appState.unmute() }
-           )){
-                Text("Mute for 10 minutes")
+            Button(action: {
+                if appState.isMuted {
+                    appState.unmute()
+                } else {
+                    appState.mute()
+                }
+            }) {
+                HStack {
+                    Image(systemName: appState.isMuted ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                    Text(appState.isMuted ? "Unmute" : "Mute for 10 Minutes")
+                }
             }
+            .buttonStyle(.borderedProminent)
+            .tint(appState.isMuted ? .accentColor : .gray)
+            .opacity(appState.isMuted ? 1.0 : 0.8)
             
             // MARK: - Demo Mode
             Toggle(isOn:
@@ -64,7 +73,7 @@ struct AppMenu: View {
                    )){
                 Text("Demo Mode")
             }
-            
+
             if(appState.isDemoMode){
                 HStack{
                     Text("Demo Battery Level")

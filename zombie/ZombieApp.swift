@@ -23,11 +23,12 @@ struct ZombieApp: App {
             OverlayManager.shared.ensureOverlay(appState: capturedState)
         }
         
+        // Request notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                print("Successfully requested notifications")
+                NSLog("Successfully requested notifications")
             } else if let error = error {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         }
     }
