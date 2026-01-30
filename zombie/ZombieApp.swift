@@ -18,7 +18,7 @@ struct ZombieApp: App {
         self.monitor = PowerEventMonitor(appState: appState)
         
         // Ensure overlay is created at startup (if needed)
-        let capturedState = appState
+        let capturedState = self.appState
         Task { @MainActor in
             OverlayManager.shared.ensureOverlay(appState: capturedState)
         }
@@ -33,15 +33,16 @@ struct ZombieApp: App {
     }
     
     
+    
+    
     var body: some Scene {
-        MenuBarExtra("UtilityApp", systemImage: appState.controledWindow == nil ? "hammer" : "minus.plus.batteryblock.exclamationmark.fill") {
+        MenuBarExtra("UtilityApp", systemImage: self.appState.controledWindow == nil ? "bolt.badge.checkmark.fill" : "bolt.trianglebadge.exclamationmark.fill") {
             VStack{
-                AppMenu().environment(appState)
+                AppMenu().environment(self.appState)
             }
             .padding(16)
         }
         .menuBarExtraStyle(.window)
-        .menuBarExtraAccess(isPresented: $appState.autoload)
     }
 }
 

@@ -16,36 +16,36 @@ final class OverlayManager {
     func ensureOverlay(appState: AppState) {
         guard NSScreen.main != nil else { return }
 
-        if window == nil {
-            createOverlay(appState: appState)
+        if self.window == nil {
+            self.window = self.createOverlay(appState: appState)
         }
 
-        window?.alphaValue = 1
-        window?.makeKeyAndOrderFront(nil)
+        self.window?.alphaValue = 1
+        self.window?.makeKeyAndOrderFront(nil) // FIXME: Remove if redundant
         appState.controledWindow = window
     }
 
     func removeOverlay(appState: AppState) {
-        window?.orderOut(nil)
+        self.window?.orderOut(nil)
+        self.window = nil
         appState.controledWindow = nil
-        window = nil
     }
 
-    private func createOverlay(appState: AppState) {
+    private func createOverlay(appState: AppState) -> NSWindow {
         let screenFrame = NSScreen.main?.visibleFrame ?? .zero
 
-        let window = NSWindow(
+        let _window = NSWindow(
             contentRect: screenFrame,
             styleMask: [.borderless],
             backing: .buffered,
             defer: false
         )
 
-        window.isOpaque = false
-        window.backgroundColor = .clear
-        window.level = .floating
-        window.ignoresMouseEvents = true
-        window.collectionBehavior = [
+        _window.isOpaque = false
+        _window.backgroundColor = .clear
+        _window.level = .floating
+        _window.ignoresMouseEvents = true
+        _window.collectionBehavior = [
             .canJoinAllSpaces,
             .fullScreenAuxiliary,
             .stationary,
@@ -53,8 +53,8 @@ final class OverlayManager {
         ]
 
         let borderView = ZombieView().environment(appState)
-        window.contentView = NSHostingView(rootView: borderView)
+        _window.contentView = NSHostingView(rootView: borderView)
 
-        self.window = window
+        return _window
     }
 }

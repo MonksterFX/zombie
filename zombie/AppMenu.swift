@@ -17,25 +17,31 @@ struct AppMenu: View {
             HStack(alignment: .top){
                 Text("Zombie").font(.largeTitle)
                 Spacer()
+                Text("\(appState.estimatedMinutesRemainingAsFormated)")
                 Text("\(appState.batteryLevel)%")
             }
             Text("Battery monitor for the last mile!").font(.subheadline)
 
             HStack(){
-                Text("Warning Threshold")
+                Text("Warning Threshold").fontWeight(.bold)
                 Spacer()
                 Text("\(appState.lowThreshold)%")
             }
+            Text("When to show the dead screen").font(.subheadline)
+            
             Slider(value: Binding(
                 get: { Double(appState.lowThreshold) },
                 set: { appState.lowThreshold = Int($0) }
             ), in: 1...30, step: 1)
             
             HStack{
-                Text("Dead Threshold")
+                Text("Dead Threshold").fontWeight(.bold)
+            
                 Spacer()
                 Text("\(appState.minThreshold)%")
             }
+            Text("When to show the dead screen").font(.subheadline)
+            
             Slider(value: Binding(
                 get: { Double(appState.minThreshold) },
                 set: { appState.minThreshold = Int($0) }
@@ -50,7 +56,7 @@ struct AppMenu: View {
                 Text("Mute for 10 minutes")
             }
             
-            // MARK: Demo Mode
+            // MARK: - Demo Mode
             Toggle(isOn:
                     Binding(
                         get: { appState.isDemoMode },
@@ -85,7 +91,10 @@ struct AppMenu: View {
 
 struct AppMenu_Previews: PreviewProvider {
     static var previews: some View {
-        AppMenu()
+        VStack{
+            AppMenu().environment(AppState.shared)
+        }
+        .padding(16)
     }
 }
 
