@@ -66,6 +66,16 @@ private extension AppState {
         didSet {
             // Reset sample history when switching charging state
             // batterySamples.removeAll()
+            
+            // Instantly update overlay state when power supply changes
+            if isCharging {
+                // Power plugged in - turn off zombie mode
+                self.isOn = false
+            } else if batteryLevel <= lowThreshold {
+                // Power unplugged and battery low - turn on zombie mode
+                self.isOn = true
+            }
+            self.updateOverlayState()
         }
     }
     

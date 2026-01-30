@@ -17,10 +17,12 @@ class PowerEventMonitor {
         // Register for power source change notifications
         runLoopSource = IOPSNotificationCreateRunLoopSource({ context in
             let monitor = Unmanaged<PowerEventMonitor>.fromOpaque(context!).takeUnretainedValue()
+            NSLog("⚡️ Power source change notification received")
             monitor.powerSourceChanged()
         }, Unmanaged.passUnretained(self).toOpaque()).takeRetainedValue()
 
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .defaultMode)
+        // Ensure we add the source to the main run loop for instant UI updates
+        CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource, .commonModes)
 
         // Initial state
         powerSourceChanged()
@@ -28,10 +30,11 @@ class PowerEventMonitor {
 
     deinit {
         if let source = runLoopSource {
-            CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source, .defaultMode)
+            CFRunLoopRemoveSource(CFRunLoopGetMain(), source, .commonModes)
         }
     }
 
+    /// Handles power source changes and updates app state
     private func powerSourceChanged() {
         guard let blob = IOPSCopyPowerSourcesInfo()?.takeRetainedValue(),
               let sources = IOPSCopyPowerSourcesList(blob)?.takeRetainedValue() as? [CFTypeRef],
@@ -40,15 +43,20 @@ class PowerEventMonitor {
         else { return }
 
         let powerSourceState = info[kIOPSPowerSourceStateKey] as? String ?? "Unknown"
+        let powerSourceType = info[kIOPSTypeKey] as? String ?? "Unknown"
         let isCharging = info[kIOPSIsChargingKey] as? Bool ?? false
         let capacity = info[kIOPSCurrentCapacityKey] as? Int ?? 0
         
-        debugPrint(capacity, powerSourceState, isCharging)
+        // Check if we're on AC power (more reliable than just checking isCharging)
+        let isOnACPower = (powerSourceState == kIOPSACPowerValue) || 
+                          (powerSourceType == kIOPSInternalBatteryType && isCharging)
+        
+        NSLog("🔋 Power state: \(powerSourceState), Type: \(powerSourceType), Charging: \(isCharging), AC Power: \(isOnACPower), Battery: \(capacity)%")
 
         // Update AppState on main thread (important for SwiftUI)
         DispatchQueue.main.async {
             self.appState.powerSource = powerSourceState
-            self.appState.isCharging = isCharging
+            self.appState.isCharging = isOnACPower
             self.appState.updateBatteryLevel(level: capacity)
         }
     }
