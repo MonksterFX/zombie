@@ -104,3 +104,7 @@ iOSInjectionProject/
 
 # cursor output
 SECURITY_AUDIT_REPORT.md
+
+# build output
+build/
+zombie.pkg

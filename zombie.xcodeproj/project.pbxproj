@@ -16,6 +16,7 @@
 		DD9CCABB2ABDE86900728971 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9CCABA2ABDE86900728971 /* AppState.swift */; };
 		DD9CCAC22ABE3EC700728971 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DD9CCAC12ABE3EC700728971 /* MenuBarExtraAccess */; };
 		DDF530442EA760EB001A7F40 /* OverlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF530432EA760E3001A7F40 /* OverlayManager.swift */; };
+		DDF530462EA761F1001A7F40 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DDF530452EA761F0001A7F40 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		DD9CCAB82ABDE5D900728971 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		DD9CCABA2ABDE86900728971 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DDF530432EA760E3001A7F40 /* OverlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayManager.swift; sourceTree = "<group>"; };
+		DDF530452EA761F0001A7F40 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				DD9CCAA52ABDCCE400728971 /* ZombieApp.swift */,
 				DD9CCAA92ABDCCE600728971 /* Assets.xcassets */,
 				DD9CCAAE2ABDCCE600728971 /* zombie.entitlements */,
+				DDF530452EA761F0001A7F40 /* PrivacyInfo.xcprivacy */,
 				DD9CCAAB2ABDCCE600728971 /* Preview Content */,
 			);
 			path = zombie;
@@ -149,6 +152,7 @@
 			files = (
 				DD9CCAAD2ABDCCE600728971 /* Preview Assets.xcassets in Resources */,
 				DD9CCAAA2ABDCCE600728971 /* Assets.xcassets in Resources */,
+				DDF530462EA761F1001A7F40 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,14 +307,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"zombie/Preview Content\"";
+				DEVELOPMENT_TEAM = PB6NUQ6A37;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Max Mönch. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -335,14 +341,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"zombie/Preview Content\"";
+				DEVELOPMENT_TEAM = PB6NUQ6A37;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Max Mönch. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
