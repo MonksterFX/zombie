@@ -153,6 +153,17 @@ struct AppMenu: View {
                     Spacer()
                 }
             }
+
+            Divider()
+
+            Button(action: {
+                NSApplication.shared.terminate(nil)
+            }) {
+                HStack {
+                    Image(systemName: "power")
+                    Text("Quit Zombie")
+                }
+            }
         }
         .frame(width: 350)
     }
