@@ -103,6 +103,24 @@ struct AppMenu: View {
                 )
             ) {
                 VStack(alignment: .leading, spacing: 10) {
+                    // MARK: - Launch at Login
+                    Toggle(
+                        isOn: Binding(
+                            get: { appState.launchAtLogin },
+                            set: { newValue in
+                                appState.launchAtLogin = newValue
+                            }
+                        )
+                    ) {
+                        Text("Launch at Login")
+                    }
+                    Text("Start Zombie automatically when you log in")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+
+                    Divider()
+                        .padding(.vertical, 5)
+
                     // MARK: - Demo Mode
                     Text(
                         "Demo mode lets you test the app without having to wait for the battery to drain."
@@ -145,14 +163,6 @@ struct AppMenu: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
 
-            HStack {
-                if let url = URL(string: "https://github.com/MonksterFX/zombie")
-                {
-                    Spacer()
-                    Link("Zombie - Github", destination: url)
-                    Spacer()
-                }
-            }
 
             Divider()
 
@@ -164,6 +174,16 @@ struct AppMenu: View {
                     Text("Quit Zombie")
                 }
             }
+
+            HStack {
+                if let url = URL(string: "https://github.com/MonksterFX/zombie")
+                {
+                    Spacer()
+                    Link("Zombie - Github", destination: url)
+                    Spacer()
+                }
+            }
+
         }
         .frame(width: 350)
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ServiceManagement
 
 // MARK: - UserDefaults Keys
 private extension AppState {
@@ -14,6 +15,7 @@ private extension AppState {
         static let lowThreshold = "zombie.lowThreshold"
         static let minThreshold = "zombie.minThreshold"
         static let overlayText = "zombie.overlayText"
+        static let launchAtLoginConfigured = "zombie.launchAtLoginConfigured"
     }
 }
 
@@ -61,6 +63,33 @@ private extension AppState {
     var overlayText: String = "Dead" {
         didSet {
             UserDefaults.standard.set(overlayText, forKey: Keys.overlayText)
+        }
+    }
+    
+    /// Trigger to force UI refresh when launch at login changes
+    private var launchAtLoginTrigger: Bool = false
+    
+    /// Whether the app should launch automatically at login
+    var launchAtLogin: Bool {
+        get {
+            // Access trigger to establish observation dependency
+            _ = launchAtLoginTrigger
+            return SMAppService.mainApp.status == .enabled
+        }
+        set {
+            do {
+                if newValue {
+                    try SMAppService.mainApp.register()
+                    NSLog("Launch at login enabled")
+                } else {
+                    try SMAppService.mainApp.unregister()
+                    NSLog("Launch at login disabled")
+                }
+                // Toggle trigger to force UI refresh
+                launchAtLoginTrigger.toggle()
+            } catch {
+                NSLog("Failed to update launch at login: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -113,6 +142,12 @@ private extension AppState {
         self.lowThreshold = UserDefaults.standard.object(forKey: Keys.lowThreshold) as? Int ?? 10
         self.minThreshold = UserDefaults.standard.object(forKey: Keys.minThreshold) as? Int ?? 1
         self.overlayText = UserDefaults.standard.string(forKey: Keys.overlayText) ?? "Dead"
+        
+        // Enable launch at login by default on first run
+        if !UserDefaults.standard.bool(forKey: Keys.launchAtLoginConfigured) {
+            UserDefaults.standard.set(true, forKey: Keys.launchAtLoginConfigured)
+            self.launchAtLogin = true
+        }
         
         // Update overlay state based on loaded settings
         self.updateOverlayState()
