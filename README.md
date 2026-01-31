@@ -1,4 +1,4 @@
-# Zombie - Battery Watch
+# Zombie - Battery Monitor For The Last Mile
 
 A macOS menu bar app that monitors your battery level and provides visual warnings to prevent unexpected shutdowns.
 
