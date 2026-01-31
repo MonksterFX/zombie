@@ -94,7 +94,6 @@ struct AppMenu: View {
 
             // MARK: - Advanced Settings
             DisclosureGroup(
-                "Advanced Settings",
                 isExpanded: Binding(
                     get: { appState.advancedSettings },
                     set: { newValue in
@@ -104,6 +103,10 @@ struct AppMenu: View {
             ) {
                 VStack(alignment: .leading, spacing: 10) {
                     // MARK: - Launch at Login
+                    Text("Start Zombie automatically when you log in")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+
                     Toggle(
                         isOn: Binding(
                             get: { appState.launchAtLogin },
@@ -114,9 +117,6 @@ struct AppMenu: View {
                     ) {
                         Text("Launch at Login")
                     }
-                    Text("Start Zombie automatically when you log in")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
 
                     Divider()
                         .padding(.vertical, 5)
@@ -161,6 +161,11 @@ struct AppMenu: View {
                 }
                 .padding(.top, 10)
                 .frame(maxWidth: .infinity, alignment: .leading)
+            } label: {
+                Text("Advanced Settings")
+                    .onTapGesture {
+                        appState.advancedSettings.toggle()
+                    }
             }
 
 
