@@ -23,20 +23,35 @@ struct GlowingBorderView: View {
     var relativeBatteryLifeLeft: Double = 1
     var color = Color.red
     
+    /// Calculates the diagonal radius for the radial gradient based on view dimensions.
+    /// - Parameters:
+    ///   - width: The view width
+    ///   - height: The view height
+    /// - Returns: Half the diagonal length, which ensures the gradient covers the entire view from center
+    private func baseRadius(width: CGFloat, height: CGFloat) -> CGFloat {
+        return sqrt(width * width + height * height) / 2
+    }
+    
     var body: some View {
-        Rectangle()
-            .fill(
-                  RadialGradient(
-                      gradient: Gradient(colors: [
-                        .clear,
-                        color
-                      ]),
-                      center: .center,
-                      startRadius: 900.0 * relativeBatteryLifeLeft, // TODO: calculate based on battery status
-                      endRadius: 900 + 450 * relativeBatteryLifeLeft  // TODO: calculate depending on screen size / 900
-                  )
-              )
-            .allowsHitTesting(false) // TODO: remove
+        GeometryReader { geometry in
+            let radius = baseRadius(width: geometry.size.width, height: geometry.size.height)
+            
+            Rectangle()
+                .fill(
+                    RadialGradient(
+                        gradient: Gradient(colors: [
+                            .clear,
+                            color
+                        ]),
+                        center: .center,
+                        // old version for 16'inch screen: startRadius: 900.0 * relativeBatteryLifeLeft
+                        startRadius: radius * relativeBatteryLifeLeft,
+                        // old version for 16'inch screen: endRadius: 900 + 450 * relativeBatteryLifeLeft
+                        endRadius: radius + (radius * 0.5) * relativeBatteryLifeLeft
+                    )
+                )
+                .allowsHitTesting(false)
+        }
     }
 }
 
