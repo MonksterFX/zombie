@@ -52,6 +52,6 @@ This Privacy Policy may be updated if the App's functionality changes. Any updat
 
 If you have questions about this Privacy Policy, you may contact:
 
-[Developer Name / Company Name]
-[Contact Email]
-[Website (optional)]
+Max Mönch
+aasp@mrmonk.dev
+https://github.com/MonksterFX/zombie
