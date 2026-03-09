@@ -45,7 +45,13 @@ Zombie creates a simple overlay that draws a border around all connected screens
    open zombie.xcodeproj
    ```
 
-3. Build and run the project (⌘+R)
+3. Configure signing:
+   - Select the `zombie` target in Xcode
+   - Go to **Signing & Capabilities**
+   - Select your Development Team
+   - Change the **Bundle Identifier** to your own (e.g., `com.yourname.zombie`)
+
+4. Build and run the project (⌘+R)
 
 ## Usage
 
